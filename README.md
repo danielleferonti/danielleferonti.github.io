@@ -3,31 +3,31 @@ Project
 
 
 ---
-title: "CourseRA9_Wk2_Proj"
+---
+title: "Week3_Project"
 author: "DM Feronti"
-date: "February 20, 2018"
-output: html_document
+date: "March 2, 2018"
+output:
+  slidy_presentation: default
+  beamer_presentation: default
+  ioslides_presentation: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+library(datasets)
 ```
 
-## Assignment: R Markdown & Leaflet
+## Plot: Chick Weights
 
-Create a web page using R Markdown that features a map created with Leaflet.
-
-Host your webpage on either GitHub Pages, RPubs, or NeoCities.
-
-Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity!
-
-```{r MyMap}
-library(leaflet)
-OSU_Map <- leaflet() %>%
-  addTiles()
-OSU_Map<- OSU_Map %>%
-  addMarkers(lat = 40.0017, lng= -83.0197,
-             popup ="Ohio Stadium...O-H!")
-OSU_Map
-
+```{r cars, echo = TRUE}
+data <- as.data.frame(ChickWeight)
+plot_ly(ChickWeight,
+        x = ~Chick,
+        y= ~weight,
+        type = "scatter",
+        mode = 'markers',
+        color = ~Diet
+        ,size = ~Time)
 ```
